@@ -1,5 +1,6 @@
 public class Vare
 {
+    //Properties
     public string VareNavn { get; set; }
     public string VareKode { get; set; }
     public double Pris { get; set; }

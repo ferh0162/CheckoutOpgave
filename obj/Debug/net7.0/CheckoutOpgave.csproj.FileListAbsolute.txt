@@ -1,0 +1,15 @@
+/Users/frrt/VSCode/C#/CheckoutOpgave/obj/Debug/net7.0/CheckoutOpgave.csproj.AssemblyReference.cache
+/Users/frrt/VSCode/C#/CheckoutOpgave/obj/Debug/net7.0/CheckoutOpgave.GeneratedMSBuildEditorConfig.editorconfig
+/Users/frrt/VSCode/C#/CheckoutOpgave/obj/Debug/net7.0/CheckoutOpgave.AssemblyInfoInputs.cache
+/Users/frrt/VSCode/C#/CheckoutOpgave/obj/Debug/net7.0/CheckoutOpgave.AssemblyInfo.cs
+/Users/frrt/VSCode/C#/CheckoutOpgave/obj/Debug/net7.0/CheckoutOpgave.csproj.CoreCompileInputs.cache
+/Users/frrt/VSCode/C#/CheckoutOpgave/bin/Debug/net7.0/CheckoutOpgave
+/Users/frrt/VSCode/C#/CheckoutOpgave/bin/Debug/net7.0/CheckoutOpgave.deps.json
+/Users/frrt/VSCode/C#/CheckoutOpgave/bin/Debug/net7.0/CheckoutOpgave.runtimeconfig.json
+/Users/frrt/VSCode/C#/CheckoutOpgave/bin/Debug/net7.0/CheckoutOpgave.dll
+/Users/frrt/VSCode/C#/CheckoutOpgave/bin/Debug/net7.0/CheckoutOpgave.pdb
+/Users/frrt/VSCode/C#/CheckoutOpgave/obj/Debug/net7.0/CheckoutOpgave.dll
+/Users/frrt/VSCode/C#/CheckoutOpgave/obj/Debug/net7.0/refint/CheckoutOpgave.dll
+/Users/frrt/VSCode/C#/CheckoutOpgave/obj/Debug/net7.0/CheckoutOpgave.pdb
+/Users/frrt/VSCode/C#/CheckoutOpgave/obj/Debug/net7.0/CheckoutOpgave.genruntimeconfig.cache
+/Users/frrt/VSCode/C#/CheckoutOpgave/obj/Debug/net7.0/ref/CheckoutOpgave.dll
