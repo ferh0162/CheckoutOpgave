@@ -10,16 +10,22 @@ public class Scanner
         // Initialiser listen af varer
         varer = new List<Vare>
 {
-    //Object Initializers
-    new Vare("Mælk", "A", 10.0, 1),
-    new Vare("Brød", "B", 20.0, 2),
-    new Vare("Æg", "C", 5.0, 1),
-    new Vare("Smør", "D", 15.0, 1),
-    new Vare("Pasta", "E", 25.0, 2),
-    new Vare("Kaffe", "F", 30.0, 3),
-    new Vare("Te", "G", 20.0, 3),
-    new Vare("Kiks", "H", 12.0, 4),
-    new Vare("Sukker", "I", 8.0, 5)
+             //Object Initializers
+            new Vare("Mælk", "A", 10.0, 1),
+            new Vare("Brød", "B", 20.0, 2),
+            new Vare("Æg", "C", 5.0, 1),
+            new Vare("Smør", "D", 15.0, 1),
+            new Vare("Pasta", "E", 25.0, 2),
+            new Vare("Kaffe", "F", 30.0, 3),
+            new Vare("Te", "G", 20.0, 3),
+            new Vare("Kiks", "H", 12.0, 4),
+            new Vare("Sukker", "I", 8.0, 5),
+            
+            // Tilføjelse af nye varetyper med multipack, kampagnepriser og pant
+            new Vare("Vandflasker", "V", 10.0, 1, erMultipack: true, multipackAntal: 6, multipackPris: 50.0),
+            new Vare("Chokoladebarer", "C", 15.0, 2, harKampagnepris: true, kampagneAntal: 3, kampagnePris: 40.0),
+            new Vare("Sodavand", "S", 8.0, 3, harPant: true, pantBeløb: 1.0),
+            new Vare("Chips", "H", 20.0, 4)
 };
 
     }

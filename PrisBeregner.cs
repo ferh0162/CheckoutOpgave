@@ -9,6 +9,7 @@ public class BilligPrisberegner : Prisberegner
 
     public override void BeregnPris(Vare vare)
     {
+    
         total += vare.Pris;
         Console.WriteLine($"Nuværende total: {total}");
     }
@@ -22,32 +23,69 @@ public class DyrPrisberegner : Prisberegner
     {
         scannedeVarer.Add(vare);
 
-        var grupperedeVarer = scannedeVarer
-            .GroupBy(v => v.VareGruppe)
-            .Select(group => new 
-            {
-                VareGruppe = group.Key,
-                Varer = group.GroupBy(v => v.VareKode).Select(g => new
-                {
-                    VareNavn = g.First().VareNavn,
-                    Antal = g.Count(),
-                    SamletPris = g.Sum(v => v.Pris)
-                }).ToList()
-            });
+        // Opdater totalen hver gang en ny vare scannes
+        OpdaterTotal();
+    }
 
-        Console.Clear(); // Renser konsollen for hver scanning for overskuelighed
+    private void OpdaterTotal()
+    {
         double totalPris = 0;
 
-        foreach (var gruppe in grupperedeVarer)
+        // Beregning af total pris under hensyntagen til multipack, kampagnepriser og pant
+        foreach (var vare in scannedeVarer)
         {
-            Console.WriteLine($"Varegruppe: {gruppe.VareGruppe}");
-            foreach (var v in gruppe.Varer)
-            {
-                Console.WriteLine($" - {v.VareNavn}: {v.Antal} stk. til {v.SamletPris} kr (Stk. pris: {v.SamletPris / v.Antal})");
-                totalPris += v.SamletPris;
-            }
+            totalPris += BeregnAktuelPris(vare);
         }
 
-        Console.WriteLine($"Samlet pris for alle varer: {totalPris} kr");
+        VisDetaljeretKvittering(totalPris);
     }
+private double BeregnAktuelPris(Vare vare)
+{
+    double pris = vare.Pris;
+    int antalAfSammeVare = scannedeVarer.Count(v => v.VareKode == vare.VareKode);
+
+    // Håndtering af multipack
+    if (vare.ErMultipack && antalAfSammeVare >= vare.MultipackAntal)
+    {
+        pris = vare.MultipackPris / vare.MultipackAntal;
+    }
+
+    // Håndtering af kampagnepriser
+    if (vare.HarKampagnepris && antalAfSammeVare >= vare.KampagneAntal)
+    {
+        pris = vare.KampagnePris / vare.KampagneAntal;
+    }
+
+    // Tilføj pant, hvis relevant
+    if (vare.HarPant)
+    {
+        pris += vare.PantBeløb;
+    }
+
+    return pris;
 }
+
+
+private void VisDetaljeretKvittering(double totalPris)
+{
+    Console.Clear();
+    var unikkeVarer = scannedeVarer.GroupBy(v => v.VareKode).Select(gruppe => gruppe.First());
+
+    foreach (var gruppe in unikkeVarer.GroupBy(v => v.VareGruppe))
+    {
+        Console.WriteLine($"Varegruppe: {gruppe.Key}");
+        foreach (var v in gruppe)
+        {
+            int antalAfSammeVare = scannedeVarer.Count(v2 => v2.VareKode == v.VareKode);
+            double samletPrisForVare = BeregnAktuelPris(v) * antalAfSammeVare;
+
+            Console.WriteLine($" - {v.VareNavn} ({antalAfSammeVare} stk): {samletPrisForVare} kr (Stk. pris: {BeregnAktuelPris(v)} kr)");
+        }
+    }
+
+    Console.WriteLine($"Samlet pris: {totalPris} kr");
+}
+
+}
+
+
