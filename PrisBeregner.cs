@@ -5,15 +5,45 @@ public abstract class Prisberegner
 
 public class BilligPrisberegner : Prisberegner
 {
-    private double total = 0;
+    private List<Vare> scannedeVarer = new List<Vare>();
 
     public override void BeregnPris(Vare vare)
     {
+        scannedeVarer.Add(vare);
+        OpdaterTotal();
+    }
 
-        total += vare.Pris;
-        Console.WriteLine($"Nuværende total: {total}");
+    private void OpdaterTotal()
+    {
+        double totalPris = scannedeVarer.Sum(v => v.Pris);
+        double kampagneRabat = BeregnKampagneRabat();
+        double totalPant = scannedeVarer.Where(v => v.HarPant).Sum(v => v.PantBeløb);
+
+        VisDetaljeretKvittering(totalPris, kampagneRabat, totalPant);
+    }
+
+    private double BeregnKampagneRabat()
+    {
+        return scannedeVarer
+            .Where(v => v.HarKampagnepris)
+            .GroupBy(v => v.VareKode)
+            .Sum(g =>
+            {
+                var vare = g.First();
+                int antalKampagner = g.Count() / vare.KampagneAntal;
+                return antalKampagner * (vare.Pris * vare.KampagneAntal - vare.KampagnePris);
+            });
+    }
+
+    private void VisDetaljeretKvittering(double totalPris, double kampagneRabat, double totalPant)
+    {
+        Console.Clear();
+        Console.WriteLine($"Total pris: {totalPris + totalPant - kampagneRabat} kr");
     }
 }
+
+
+
 
 public class DyrPrisberegner : Prisberegner
 {
