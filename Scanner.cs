@@ -20,12 +20,12 @@ public class Scanner
             new Vare("Te", "G", 20.0, 3),
             new Vare("Kiks", "H", 12.0, 4),
             new Vare("Sukker", "I", 8.0, 5),
-            
+
             // Tilføjelse af nye varetyper med multipack, kampagnepriser og pant
-            new Vare("Vandflasker", "V", 10.0, 1, erMultipack: true, multipackAntal: 6, multipackPris: 50.0),
-            new Vare("Chokoladebarer", "C", 15.0, 2, harKampagnepris: true, kampagneAntal: 3, kampagnePris: 40.0),
-            new Vare("Sodavand", "S", 8.0, 3, harPant: true, pantBeløb: 1.0),
-            new Vare("Chips", "H", 20.0, 4)
+            new Vare("Vandflasker", "J", 10.0, 1, erMultipack: true, multipackAntal: 6, multipackPris: 50.0),
+            new Vare("Chokoladebarer", "K", 15.0, 2, harKampagnepris: true, kampagneAntal: 3, kampagnePris: 40.0),
+            new Vare("Sodavand", "L", 8.0, 3, harPant: true, pantBeløb: 1.0),
+            new Vare("Chips", "M", 20.0, 4)
 };
 
     }
