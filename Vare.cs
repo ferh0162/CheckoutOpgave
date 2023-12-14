@@ -5,8 +5,6 @@ public class Vare
     public string VareKode { get; set; }
     public double Pris { get; set; }
     public int VareGruppe { get; set; }
-
-    // Nye egenskaber
     public bool ErMultipack { get; set; }
     public int MultipackAntal { get; set; }
     public bool HarKampagnepris { get; set; }
@@ -14,7 +12,6 @@ public class Vare
     public double KampagnePris { get; set; }
     public bool HarPant { get; set; }
     public double PantBeløb { get; set; }
-
     public string MultiPackReference { get; set; }
 
     public Vare(string vareNavn, string vareKode, double pris, int vareGruppe, 
